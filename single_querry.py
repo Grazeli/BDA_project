@@ -12,7 +12,7 @@ sufix_url =  '&apiKey=' + api_key
 sorted_by = '&sortBy=popularity'
 
 # Date format YYYY-MM-DD
-dates_range = ['2021-12-09', '2021-12-10']
+dates_range = ['2021-12-09']
 
 sources = ['abc-news', 'abc-news-au', 'aftenposten', 'al-jazeera-english', 'google-news-ar', 'argaam', 'ars-technica', 'ary-news', 'associated-press', 'australian-financial-review', 'axios', 'bbc-news', 'bbc-sport', 'bild', 'blasting-news-br', 'bleacher-report', 'bloomberg', 'breitbart-news', 'business-insider', 'business-insider-uk', 'buzzfeed', 'google-news-ca', 'cbs-news', 'cnn', 'cnn-es', 'crypto-coins-news', 'der-tagesspiegel', 'die-zeit', 'el-mundo', 'engadget', 'entertainment-weekly', 'espn', 'espn-cric-info', 'financial-post', 'focus', 'football-italia', 'fortune', 'four-four-two', 'fox-news', 'fox-sports', 'globo', 'google-news', 'ansa', 'google-news-au', 'google-news-br', 'cbc-news', 'google-news-fr', 'google-news-in', 'google-news-is', 'the-times-of-india', 'google-news-ru', 'google-news-sa', 'google-news-uk', 'goteborgs-posten', 'gruenderszene', 'hacker-news', 'handelsblatt', 'ign', 'il-sole-24-ore', 'ynet', 'infobae', 'info-money', 'la-gaceta', 'la-repubblica', 'le-monde', 'lenta', 'lequipe', 'les-echos', 'liberation', 'marca', 'mashable', 'medical-news-today', 'msnbc', 'mtv-news', 'mtv-news-uk', 'national-geographic', 'national-review', 'nbc-news', 'news24', 'new-scientist', 'news-com-au', 'newsweek', 'new-york-magazine', 'next-big-future', 'nfl-news', 'nhl-news', 'nrk', 'politico', 'polygon', 'rbc', 'recode', 'reddit-r-all', 'reuters', 'rt', 'rte', 'rtl-nieuws', 'sabq', 'spiegel-online', 'svenska-dagbladet', 't3n', 'talksport', 'techcrunch', 'techcrunch-cn', 'techradar', 'the-american-conservative', 'the-globe-and-mail', 'the-hill', 'the-hindu', 'the-huffington-post', 'the-irish-times', 'the-jerusalem-post', 'the-lad-bible', 'the-next-web', 'the-sport-bible', 'google-news-it', 'the-verge', 'the-wall-street-journal', 'the-washington-post', 'the-washington-times', 'time', 'usa-today', 'vice-news', 'wired', 'wired-de', 'wirtschafts-woche', 'xinhua-net', 'independent', 'la-nacion']
 
@@ -22,8 +22,8 @@ valid = True
 if not os.path.isdir('Data'):
     os.mkdir('Data')
 
-if not os.path.isdir('summary'):
-    os.mkdir('summary')
+if not os.path.isdir('summary_old'):
+    os.mkdir('summary_old')
 
 for date_query in dates_range:
     results = []
@@ -69,8 +69,8 @@ for date_query in dates_range:
         break
 
     summary_day = pd.DataFrame(results)
-    summary_file_path = 'summary/summary_' + date_name + '.csv'
-    summary_day.to_csv(summary_file_path, header=False)
+    summary_file_path = 'summary_old/summary_' + date_name + '.csv'
+    summary_day.to_csv(summary_file_path, header=False, index=False)
     print(results)
 
 print('Ended: ', valid)

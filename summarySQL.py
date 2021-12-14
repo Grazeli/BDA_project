@@ -28,5 +28,14 @@ except Exception as e:
 summary_files = os.listdir('summary/')
 
 for file in summary_files:
-    df = pd.read_csv('summary/' + file)
-    print(df)
+    with open('summary/' +  file) as f:
+        cursor.copy_from(f, 'summary', columns=('date', 'papers', 'num_articles'), sep=',')
+
+
+cursor.execute("""SELECT * FROM summary""")
+rows = cursor.fetchall()
+print(rows[0:4])
+
+cursor.execute("""SELECT COUNT(*) FROM summary""")
+rows = cursor.fetchall()
+print(rows)
