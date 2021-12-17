@@ -3,8 +3,10 @@
 
 # In[ ]:
 
-
 import requests
+import pandas as pd
+import json
+import os
 
 try:
     from pymongo import MongoClient
@@ -37,7 +39,7 @@ class MongoDB(object):
                     f = open('./'+dir_name+'/'+os.path.join(entry, file))  # open a file
                     
                     text = f.read()
-                    print (json.loads(text)['articles'])
+                    #print (json.loads(text)['articles'])
                     covid_articles =json.loads(text)['articles']
                     #print(response)
                     
@@ -51,8 +53,7 @@ class MongoDB(object):
                         if not existing_document:
                              post_id = self._collection.insert_one(i).inserted_id
                         #return post_id
-
-
+        print("done")
 
 
 mongo_db = MongoDB(database_name='Covid_db22', collection_name='covid_data22')
