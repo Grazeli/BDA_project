@@ -3,10 +3,10 @@
 
 # In[ ]:
 
-
 import requests
-import os
+import pandas as pd
 import json
+import os
 
 try:
     from pymongo import MongoClient
@@ -62,11 +62,7 @@ class MongoDB(object):
                             count_existing += 1
 
                         #return post_id
-
-        print('Count articles: ', count_articles)
-        print('Count existing: ', count_existing)
-
-
+        print("done")
 
 
 mongo_db = MongoDB(database_name='Covid_db22', collection_name='covid_data22')
