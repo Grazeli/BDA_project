@@ -62,6 +62,8 @@ class MongoDB(object):
                             count_existing += 1
 
                         #return post_id
+        print('Number of documents: ', count_articles)
+        print('Number of duplicates: ', count_existing)
         print("done")
 
 
